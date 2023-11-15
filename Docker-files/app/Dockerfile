@@ -4,7 +4,7 @@ FROM openjdk:latest
 WORKDIR /app
 
 # Copy the JAR file into the container at /app
-COPY target/*.jar /app/app.jar
+COPY *.jar /app/app.jar
 
 # Expose the port that the Spring Boot app will run on
 EXPOSE 8085
