@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM openjdk:8
 
 # Copy the JAR file into the container at /app
 COPY *.jar app.jar
