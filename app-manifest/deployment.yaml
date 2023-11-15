@@ -1,0 +1,21 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: spring-app-k8s 
+spec: 
+  template: 
+    metadata: 
+      name: spring-app-pod 
+      labels:
+        app: spring-app  
+    spec: 
+      containers:
+      - name: spring-app 
+        image: zeenia/spring-app 
+        ports: 
+        - containerPort: 8080 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: spring-app 
+  
