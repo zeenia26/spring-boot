@@ -13,7 +13,14 @@ spec:
       - name: spring-app 
         image: zeenia/spring-app 
         ports: 
-        - containerPort: 8080 
+        - containerPort: 8080
+        env: 
+        - name: "MYSQL_ROOT_USER"
+          value: "root"
+          name: "MYSQL_ROOT_PASSWORD"
+          value: "fQq0E5MWfR"
+          name: "MYSQL_DATABASE"
+          value: "springdb"
   replicas: 1 
   selector: 
     matchLabels: 
