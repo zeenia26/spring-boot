@@ -90,13 +90,13 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>6.4.1</version>
                 <configuration>
-                    <defaultSchema>bugtracker</defaultSchema>
+                    <defaultSchema>springdb</defaultSchema>
                     <schemas>
-                        <schema>bugtracker</schema>
+                        <schema>springdb</schema>
                     </schemas>
-                    <url>jdbc:mysql://localhost:3306?serverTimezone=UTC</url>
+                    <url>jdbc:mysql://mysql:3306?serverTimezone=UTC</url>
                     <user>root</user>
-                    <password>Chris93!</password>
+                    <password>fQq0E5MWfR</password>
                 </configuration>
             </plugin>
         </plugins>
