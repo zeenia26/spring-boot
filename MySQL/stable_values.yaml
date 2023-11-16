@@ -21,21 +21,21 @@ testFramework:
 ## Specify password for root user
 ##
 ## Default: random 10 character string
-# mysqlRootPassword: testing
+mysqlRootPassword: fQq0E5MWfR
 
 ## Create a database user
 ##
-# mysqlUser:
+mysqlUser: root
 ## Default: random 10 character string
-# mysqlPassword:
+mysqlPassword:
 
 ## Allow unauthenticated access, uncomment to enable
 ##
-# mysqlAllowEmptyPassword: true
+mysqlAllowEmptyPassword: true
 
 ## Create a database
 ##
-# mysqlDatabase:
+mysqlDatabase: "springdb"
 
 ## Specify an imagePullPolicy (Required)
 ## It's recommended to change this to 'Always' if the image tag is 'latest'
