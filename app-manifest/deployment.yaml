@@ -20,7 +20,7 @@ spec:
           name: "MYSQL_ROOT_PASSWORD"
           value: "fQq0E5MWfR"
           name: "MYSQL_DATABASE_URL"
-          value: "jdbc:mysql://mysql.default.svc.cluster.local:3306/springdb?serverTimezone=UTC&useLegacyDatetimeCode=false"
+          value: "jdbc:mysql://10.107.196.89:3306/springdb?serverTimezone=UTC&useLegacyDatetimeCode=false"
   replicas: 1 
   selector: 
     matchLabels: 

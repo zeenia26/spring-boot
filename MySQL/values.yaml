@@ -207,29 +207,29 @@ primary:
     default_authentication_plugin={{- .Values.auth.defaultAuthenticationPlugin | default "mysql_native_password" }}
     skip-name-resolve
     explicit_defaults_for_timestamp
-    basedir=/opt/bitnami/mysql
+    basedir=C:\\tools\\mysql\\current
     plugin_dir=/opt/bitnami/mysql/lib/plugin
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
-    datadir=/bitnami/mysql/data
+    socket=/var/lib/mysql/mysql.sock
+    datadir=C:\\ProgramData\\MySQL\\data
     tmpdir=/opt/bitnami/mysql/tmp
     max_allowed_packet=16M
-    bind-address=*
+    bind-address=0.0.0.0
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
-    log-error=/opt/bitnami/mysql/logs/mysqld.log
+    log-error="DESKTOP-61TBILQ.log"
     character-set-server=UTF8
     slow_query_log=0
     long_query_time=10.0
 
     [client]
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
+    socket=/var/lib/mysql/mysql.sock
     default-character-set=UTF8
     plugin_dir=/opt/bitnami/mysql/lib/plugin
 
     [manager]
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
+    socket=/var/lib/mysql/mysql.sock
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
   ## @param primary.existingConfigmap Name of existing ConfigMap with MySQL Primary configuration.
   ## NOTE: When it's set the 'configuration' parameter is ignored
@@ -592,29 +592,29 @@ secondary:
     default_authentication_plugin=mysql_native_password
     skip-name-resolve
     explicit_defaults_for_timestamp
-    basedir=/opt/bitnami/mysql
+    basedir=C:\\tools\\mysql\\current
     plugin_dir=/opt/bitnami/mysql/lib/plugin
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
-    datadir=/bitnami/mysql/data
-    tmpdir=/opt/bitnami/mysql/tmp
+    socket=/var/lib/mysql/mysql.sock
+    datadir=C:\\ProgramData\\MySQL\\data
+    tmpdir=/tmp
     max_allowed_packet=16M
-    bind-address=*
+    bind-address=0.0.0.0
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
-    log-error=/opt/bitnami/mysql/logs/mysqld.log
+    log-error=DESKTOP-61TBILQ.log
     character-set-server=UTF8
     slow_query_log=0
     long_query_time=10.0
 
     [client]
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
+    socket=/var/lib/mysql/mysql.sock
     default-character-set=UTF8
     plugin_dir=/opt/bitnami/mysql/lib/plugin
 
     [manager]
     port=3306
-    socket=/opt/bitnami/mysql/tmp/mysql.sock
+    socket=/var/lib/mysql/mysql.sock
     pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
   ## @param secondary.existingConfigmap Name of existing ConfigMap with MySQL Secondary configuration.
   ## NOTE: When it's set the 'configuration' parameter is ignored
