@@ -20,9 +20,22 @@ spec:
           name: "MYSQL_ROOT_PASSWORD"
           value: "fQq0E5MWfR"
           name: "MYSQL_DATABASE_URL"
-          value: "jdbc:mysql://10.107.196.89:3306/springdb?serverTimezone=UTC&useLegacyDatetimeCode=false"
+          value: "jdbc:mysql://bitnamisql-mysql.spring.svc.cluster.local:3306/springdb"
   replicas: 1 
   selector: 
     matchLabels: 
       app: spring-app 
-  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-app-service
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      targetPort: 8080
+      port: 80
+  selector:
+    app: spring-app
