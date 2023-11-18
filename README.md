@@ -2,7 +2,6 @@
 
 A Java full stack application with all the CRUD operations on a MySQL database using VueJS as the Front end Framework and Spring Boot as the Back end REST API.
 
-> [See it live!](http://springcrudexampleprojectmanagementap-e-1.eba-ji5ptfcy.eu-central-1.elasticbeanstalk.com/)
 
 ## Used technologies:
 - Spring Boot
@@ -11,14 +10,26 @@ A Java full stack application with all the CRUD operations on a MySQL database u
 - Hibernate
 - MySQL
 - Thymeleaf
-- Vue.js 2.0 & Axios
-- Bootstrap
-- HTML / CSS
+- Jenkins
+- Minikube
+- Dockerfile
+- Bitnami Helm charts for MySQL
+- Git Bash
+- Kubernetes
 
-<br />
-<p align="center">
-    <img src="https://i.imgur.com/vsmUOb3.png"/>
-    <img src="https://i.imgur.com/Zf4uIvf.png"/>
-    <img src="https://i.imgur.com/wyOE8eK.png"/>
-    <img src="https://i.imgur.com/sH11mlN.png"/>
-</p>
+## Steps to Containerize a web application and deploy it on Kubernetes:
+1. Setup a Jenkins CI pipeline to build the docker image:
+       a. Install the plugins in Jenkins:
+           i. Docker-pipeline
+           ii. Docker
+           iii. Pipeline utility
+       b. Write the pipeline script and Build the job.
+2. Create the Kubernetes cluster on minikub:
+       _minikube start --driver=docker_
+3. Deploy the bitnami/mysql helm chart
+       a. Add the bitnami helm repo:
+           _helm repo add bitnami_
+       b. Deploy the mysql chart from bitnami helm charts
+           _helm install <release_name> bitnami/mysql_
+4. Deploy the Spring boot application
+       _kubectl create deployment spring-boot-k8s --image=zeenia/spring-app:latest --port=8085_
