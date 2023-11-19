@@ -17,6 +17,10 @@ A Java full stack application with all the CRUD operations on a MySQL database u
 - Git Bash
 - Kubernetes
 
+## Flow of Execution 
+ ![image](https://github.com/zeenia26/spring-boot/assets/82228863/d745620a-1e56-446b-9a2a-14e79c08f6a6)
+
+
 ## Steps to Containerize a web application and deploy it on Kubernetes:
 1. Setup a Jenkins CI pipeline to build the docker image:
   * Install the plugins in Jenkins:
