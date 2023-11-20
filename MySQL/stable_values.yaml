@@ -27,11 +27,11 @@ mysqlRootPassword: fQq0E5MWfR
 ##
 mysqlUser: root
 ## Default: random 10 character string
-mysqlPassword:
+mysqlPassword: fQq0E5MWfR
 
 ## Allow unauthenticated access, uncomment to enable
 ##
-mysqlAllowEmptyPassword: true
+mysqlAllowEmptyPassword: false
 
 ## Create a database
 ##

@@ -116,7 +116,7 @@ auth:
   ## @param auth.createDatabase Whether to create the .Values.auth.database or not
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-on-first-run
   ##
-  createDatabase: true
+  createDatabase: false
   ## @param auth.database Name for a custom database to create
   ## ref: https://github.com/bitnami/containers/tree/main/bitnami/mysql#creating-a-database-on-first-run
   ##
@@ -208,14 +208,14 @@ primary:
     skip-name-resolve
     explicit_defaults_for_timestamp
     basedir=C:\\tools\\mysql\\current
-    plugin_dir=/opt/bitnami/mysql/lib/plugin
+    plugin_dir=C:\\tools\\mysql\\current\\lib\\plugin
     port=3306
     socket=/var/lib/mysql/mysql.sock
     datadir=C:\\ProgramData\\MySQL\\data
-    tmpdir=/opt/bitnami/mysql/tmp
+    tmpdir=/tmp
     max_allowed_packet=16M
     bind-address=0.0.0.0
-    pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+    pid-file=/var/run/mysqld/mysqld.pid
     log-error="DESKTOP-61TBILQ.log"
     character-set-server=UTF8
     slow_query_log=0
@@ -225,12 +225,12 @@ primary:
     port=3306
     socket=/var/lib/mysql/mysql.sock
     default-character-set=UTF8
-    plugin_dir=/opt/bitnami/mysql/lib/plugin
+    plugin_dir=C:\\tools\\mysql\\current\\lib\\plugin
 
     [manager]
     port=3306
     socket=/var/lib/mysql/mysql.sock
-    pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+    pid-file=/var/run/mysqld/mysqld.pid
   ## @param primary.existingConfigmap Name of existing ConfigMap with MySQL Primary configuration.
   ## NOTE: When it's set the 'configuration' parameter is ignored
   ##
@@ -382,7 +382,12 @@ primary:
   ##
   readinessProbe:
     enabled: true
-    initialDelaySeconds: 5
+    exec:
+      command:
+      - sh
+      - -c
+      - "mysqladmin ping mysql -u root -p$MYSQL_ROOT_PASSWORD"
+    initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 1
     failureThreshold: 3
@@ -398,6 +403,11 @@ primary:
   ##
   startupProbe:
     enabled: true
+    exec:
+      command:
+      - sh
+      - -c
+      - "mysqladmin ping -h mysql -u root -p$MYSQL_ROOT_PASSWORD"
     initialDelaySeconds: 15
     periodSeconds: 10
     timeoutSeconds: 1
@@ -593,14 +603,14 @@ secondary:
     skip-name-resolve
     explicit_defaults_for_timestamp
     basedir=C:\\tools\\mysql\\current
-    plugin_dir=/opt/bitnami/mysql/lib/plugin
+    plugin_dir=C:\\tools\\mysql\\current\\lib\\plugin
     port=3306
     socket=/var/lib/mysql/mysql.sock
     datadir=C:\\ProgramData\\MySQL\\data
     tmpdir=/tmp
     max_allowed_packet=16M
     bind-address=0.0.0.0
-    pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+    pid-file=/var/run/mysqld/mysqld.pid
     log-error=DESKTOP-61TBILQ.log
     character-set-server=UTF8
     slow_query_log=0
@@ -610,12 +620,12 @@ secondary:
     port=3306
     socket=/var/lib/mysql/mysql.sock
     default-character-set=UTF8
-    plugin_dir=/opt/bitnami/mysql/lib/plugin
+    plugin_dir=C:\\tools\\mysql\\current\\lib\\plugin
 
     [manager]
     port=3306
     socket=/var/lib/mysql/mysql.sock
-    pid-file=/opt/bitnami/mysql/tmp/mysqld.pid
+    pid-file=/var/run/mysqld/mysqld.pid
   ## @param secondary.existingConfigmap Name of existing ConfigMap with MySQL Secondary configuration.
   ## NOTE: When it's set the 'configuration' parameter is ignored
   ##
@@ -767,6 +777,10 @@ secondary:
   ## @param secondary.readinessProbe.successThreshold Success threshold for readinessProbe
   ##
   readinessProbe:
+    exec:
+      command:
+      - mysqladmin
+      - ping 
     enabled: true
     initialDelaySeconds: 5
     periodSeconds: 10
@@ -784,6 +798,11 @@ secondary:
   ##
   startupProbe:
     enabled: true
+    exec:
+      command:
+      - sh
+      - -c
+      - "mysqladmin ping -h mysql -u root -p$MYSQL_ROOT_PASSWORD"
     initialDelaySeconds: 15
     periodSeconds: 10
     timeoutSeconds: 1
@@ -1200,6 +1219,10 @@ metrics:
   ##
   readinessProbe:
     enabled: true
+    exec:
+      command:
+      - mysqladmin
+      - ping
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 1

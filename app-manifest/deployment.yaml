@@ -20,7 +20,7 @@ spec:
           name: "MYSQL_ROOT_PASSWORD"
           value: "fQq0E5MWfR"
           name: "MYSQL_DATABASE_URL"
-          value: "jdbc:mysql://bitnamisql-mysql.spring.svc.cluster.local:3306/springdb"
+          value: "jdbc:mysql://bitnamisql-mysql:3306/springdb"
   replicas: 1 
   selector: 
     matchLabels: 
@@ -32,7 +32,7 @@ kind: Service
 metadata:
   name: spring-app-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       targetPort: 8085
