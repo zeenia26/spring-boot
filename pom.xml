@@ -115,7 +115,7 @@
                     </schemas>
                     <url>jdbc:mysql://bitnamisql-mysql.default.svc.cluster.local:3306?serverTimezone=UTC</url>
                     <user>root</user>
-                    <password>fQq0E5MWfR</password>
+                    <password>"Chris93!"</password>
                 </configuration>
             </plugin>
         </plugins>
