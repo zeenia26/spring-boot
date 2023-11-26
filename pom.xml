@@ -30,15 +30,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.orm</groupId>
-	    <artifactId>hibernate-core</artifactId>
-            <version>6.4.0.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mysql</groupId>
-	    <artifactId>mysql-connector-j</artifactId>
-	    <version>8.2.0</version>
+            <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
       
@@ -109,7 +102,7 @@
                     </schemas>
                     <url>jdbc:mysql://bitnamisql-mysql.default.svc.cluster.local:3306</url>
                     <user>root</user>
-                    <password>"Chris93!"</password>
+                    <password>Chris93!</password>
                 </configuration>
             </plugin>
         </plugins>

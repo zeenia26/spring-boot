@@ -16,11 +16,13 @@ spec:
         - containerPort: 8085
         env: 
         - name: "MYSQL_ROOT_USER"
-          value: "root"
+          value: root
           name: "MYSQL_ROOT_PASSWORD"
-          value: "fQq0E5MWfR"
-          name: "MYSQL_DATABASE_URL"
-          value: "jdbc:mysql://bitnamisql-mysql:3306/springdb"
+          value: Chris93!
+          name: "DB_HOST"
+          value: bitnamisql-mysql.default.svc.cluster.local:3306
+          name: "DB_NAME"
+          value: springdb
   replicas: 1 
   selector: 
     matchLabels: 
@@ -32,10 +34,10 @@ kind: Service
 metadata:
   name: spring-app-service
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-    - protocol: TCP
+    - protocol: "TCP"
       targetPort: 8085
-      port: 80
+      port: 8085
   selector:
     app: spring-app
